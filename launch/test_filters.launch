@@ -1,0 +1,16 @@
+<launch>
+
+    <node pkg="rosbag" type="play" name="player" output="screen" args="/home/miranda/ros_ws/src/applehand1_slip_detection/examples/apple_proxy_pick1-10.bag"/>
+	
+    <node pkg="applehand1_slip_detection" name="a1_filter" type="accel_filter_ros.py">
+		<remap from="imu_topic" to="applehand/finger1/imu" />
+		<remap from="filtered_accelerometer_topic" to="az1_filt" />
+	</node>
+
+    <node pkg="applehand1_slip_detection" name="g1_filter" type="gyro_filter_ros.py">
+		<remap from="imu_topic" to="applehand/finger1/imu" />
+		<remap from="filtered_gyroscope_topic" to="gx1_filt" />
+	</node>
+
+
+</launch>
