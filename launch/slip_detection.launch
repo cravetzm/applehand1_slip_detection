@@ -69,75 +69,7 @@
     <node pkg="applehand1_slip_detection" name="feature_creator" type="create_features.py">
 	</node>
 
-</launch><launch>
-	
-    <!-- IMU Filters -->
-
-    <node pkg="applehand1_slip_detection" name="a1_filter" type="accel_filter_ros.py">
-		<remap from="imu_topic" to="applehand/finger1/imu" />
-		<remap from="filtered_accelerometer_topic" to="az1_filt" />
-	</node>
-
-    <node pkg="applehand1_slip_detection" name="g1_filter" type="gyro_filter_ros.py">
-		<remap from="imu_topic" to="applehand/finger1/imu" />
-		<remap from="filtered_gyroscope_topic" to="gx1_filt" />
-	</node>
-
-    <node pkg="applehand1_slip_detection" name="a2filter" type="accel_filter_ros.py">
-		<remap from="imu_topic" to="applehand/finger2/imu" />
-		<remap from="filtered_accelerometer_topic" to="az2_filt" />
-	</node>
-
-    <node pkg="applehand1_slip_detection" name="g2_filter" type="gyro_filter_ros.py">
-		<remap from="imu_topic" to="applehand/finger2/imu" />
-		<remap from="filtered_gyroscope_topic" to="gx2_filt" />
-	</node>
-
-    <node pkg="applehand1_slip_detection" name="a3_filter" type="accel_filter_ros.py">
-		<remap from="imu_topic" to="applehand/finger3/imu" />
-		<remap from="filtered_accelerometer_topic" to="az3_filt" />
-	</node>
-
-    <node pkg="applehand1_slip_detection" name="g3_filter" type="gyro_filter_ros.py">
-		<remap from="imu_topic" to="applehand/finger3/imu" />
-		<remap from="filtered_gyroscope_topic" to="gx3_filt" />
-	</node>
-
-    <!--Variance Calculation-->
-
-    <node pkg="applehand1_slip_detection" name="a1_var_calc" type="windowed_variance_ros.py">
-		<remap from="signal_topic" to="az1_filt" />
-		<remap from="variance_topic" to="az1_var" />
-	</node>
-
-    <node pkg="applehand1_slip_detection" name="g1_var_calc" type="windowed_variance_ros.py">
-		<remap from="signal_topic" to="gx1_filt" />
-		<remap from="variance_topic" to="gx1_var" />
-	</node>
-
-    <node pkg="applehand1_slip_detection" name="a2_var_calc" type="windowed_variance_ros.py">
-		<remap from="signal_topic" to="az2_filt" />
-		<remap from="variance_topic" to="az2_var" />
-	</node>
-
-    <node pkg="applehand1_slip_detection" name="g2_var_calc" type="windowed_variance_ros.py">
-		<remap from="signal_topic" to="gx2_filt" />
-		<remap from="variance_topic" to="gx2_var" />
-	</node>
-
-    <node pkg="applehand1_slip_detection" name="a3_var_calc" type="windowed_variance_ros.py">
-		<remap from="signal_topic" to="az3_filt" />
-		<remap from="variance_topic" to="az3_var" />
-	</node>
-
-    <node pkg="applehand1_slip_detection" name="g3_var_calc" type="windowed_variance_ros.py">
-		<remap from="signal_topic" to="gx3_filt" />
-		<remap from="variance_topic" to="gx3_var" />
-	</node>
-  
-    <!-- ML -->
-
-    <node pkg="applehand1_slip_detection" name="feature_creator" type="create_features.py">
+    <node pkg="applehand1_slip_detection" name="classifier" type="run_classifier.py">
 	</node>
 
 </launch>
